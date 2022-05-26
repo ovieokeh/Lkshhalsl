@@ -1,0 +1,50 @@
+.filter, .filters {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.filter {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0 8px;
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #656565;
+  border-radius: 4px;
+  margin-right: 18px;
+
+  &Inner {
+    border-radius: 4px;
+    width: 14px;
+    height: 14px;
+  }
+
+  &:hover {
+    border-color: #E71575;
+
+    &Inner {
+      background: #E71575;
+    }
+  }
+}
+
+
+[data-is-selected=true] .checkbox {
+  border-color: #E71575;
+
+  &Inner {
+    background: #E71575;
+  }
+}
