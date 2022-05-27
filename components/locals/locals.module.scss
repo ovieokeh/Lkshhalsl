@@ -1,0 +1,56 @@
+$width: 400px;
+$height: 300px;
+
+.locals {
+  &Container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  &Title {
+    margin: 32px 0;
+  }
+}
+
+.local {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: $width;
+  height: $height;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  color: white;
+
+  &Photo {
+    position: fixed;
+    height: $height;
+    width: $width;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  &Content {
+    background:  rgba(0, 0, 0, 0.3);
+    margin-top: auto;
+    padding: 32px;
+  }
+
+  &Name {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  &Title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    margin: 0;
+  }
+}

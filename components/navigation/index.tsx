@@ -9,7 +9,6 @@ const Navigation: FunctionComponent = () => {
     <nav className={styles.navigation}>
       <div className="container">
         <h2 className={styles.navigationTitle}>Local guide language</h2>
-
         <Filters />
       </div>
     </nav>

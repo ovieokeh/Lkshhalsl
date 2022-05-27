@@ -9,32 +9,22 @@ import {
 const initialState = {
   filters: [],
   activeFilters: [],
-  toggleFilter: (filter: string) => {},
+  toggleFilter: (newValue: { label: string; value: string }[]) => {},
 }
 const FilterContext = createContext<{
   filters: string[]
   activeFilters: string[]
-  toggleFilter: (filter: string) => void
+  toggleFilter: (args: any) => void
 }>(initialState)
 
 export const FilterProvider: FunctionComponent<{
   filters: string[]
   children: ReactNode
 }> = ({ filters, children }) => {
-  const [activeFilters, setActiveFilters] = useState<string[]>([])
+  const [activeFilters, setActiveFilters] = useState<string[]>([filters[0]])
 
-  const toggleFilter = (filter: string) => {
-    setActiveFilters((prevActiveFilters) => {
-      const newActiveFilters: string[] = [...prevActiveFilters]
-      const filterIndex = prevActiveFilters.findIndex((f) => f === filter)
-      if (filterIndex > -1) {
-        newActiveFilters.splice(filterIndex, 1)
-      } else {
-        newActiveFilters.push(filter)
-      }
-
-      return newActiveFilters
-    })
+  const toggleFilter = (newValues: { label: string; value: string }[]) => {
+    setActiveFilters(newValues.map((value) => value.value))
   }
 
   return (

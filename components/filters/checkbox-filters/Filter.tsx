@@ -14,6 +14,7 @@ const Filter: FunctionComponent<FilterProps> = ({
 }) => {
   return (
     <button
+      type="button"
       className={styles.filter}
       data-is-selected={isSelected}
       onClick={handleClick}

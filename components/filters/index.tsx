@@ -1,26 +1,19 @@
-import { FunctionComponent } from 'react'
+import { useRouter } from 'next/router'
 
-import Filter from './Filter'
+import SelectFilters from './select-filters'
+import CheckboxFilters from './checkbox-filters'
 
-import { useFilterContext } from '../../contexts'
-import styles from './filters.module.scss'
+const Filters = () => {
+  const router = useRouter()
 
-const Filters: FunctionComponent = () => {
-  const { filters, activeFilters, toggleFilter } = useFilterContext()
-
-  const renderedFilters = filters.map((filter) => {
-    const isSelected = activeFilters.includes(filter)
-    return (
-      <Filter
-        key={filter}
-        label={filter}
-        isSelected={isSelected}
-        handleClick={() => toggleFilter(filter)}
-      />
+  const selectedFilter =
+    router.query.filterType === 'select' ? (
+      <SelectFilters />
+    ) : (
+      <CheckboxFilters />
     )
-  })
 
-  return <div className={styles.filters}>{renderedFilters}</div>
+  return selectedFilter
 }
 
 export default Filters
