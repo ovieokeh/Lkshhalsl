@@ -24,7 +24,20 @@ export const FilterProvider: FunctionComponent<{
   const [activeFilters, setActiveFilters] = useState<string[]>([filters[0]])
 
   const toggleFilter = (newValues: { label: string; value: string }[]) => {
-    setActiveFilters(newValues.map((value) => value.value))
+    // Checkbox filter
+    if (typeof newValues === 'string') {
+      setActiveFilters((prevFilters) => {
+        if (prevFilters.includes(newValues)) {
+          return [...prevFilters].filter((filter) => filter !== newValues)
+        }
+
+        return [...prevFilters, newValues]
+      })
+
+      // Select filter
+    } else {
+      setActiveFilters(newValues.map((value) => value.value))
+    }
   }
 
   return (
